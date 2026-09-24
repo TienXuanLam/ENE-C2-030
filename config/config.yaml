@@ -1,0 +1,21 @@
+# Runtime parameters — tunable behavior, loaded via self.config at construction time.
+# Static identity/manifest fields belong in config/agent.yaml, not here.
+# Never put secrets here — use ctx.secrets.require() at runtime.
+
+max_retry: 3
+memory_enabled: true   # mandatory — checkpointer required for HITL pause/resume (ADR-016 D5)
+timeout_s: 30
+
+# Tiered KB switch — proposal §11 Risk #4 Option A. When false (default), the
+# agent retrieves from the public METI/高圧ガス保安法 KB only and appends an
+# explicit disclaimer that ISO 19880 provisions are not included. Flip to true
+# once ISO 19880 commercial-use licensing clears (see kb/iso19880/README.md).
+iso_kb_enabled: false
+
+# HITL — proposal §11 Risk #5 ("submission without expert review is prohibited").
+# MainNode interrupts before returning when compliance_gaps contains a
+# high-priority non-conformance, requiring safety-manager review of the
+# regulatory submission draft before it is finalized.
+hitl:
+  enabled: true
+  max_hitl: 8

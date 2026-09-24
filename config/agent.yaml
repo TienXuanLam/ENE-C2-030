@@ -1,0 +1,15 @@
+# AgentRegistry static manifest. Runtime values belong in config/config.yaml.
+id: "ENE-C2-030"
+name: "HydrogenSupplyChainSafetyComplianceDocumentationAgent"
+namespace: "ENE"
+version: "0.1.0"
+enabled: true
+category: "Cat 2"
+generation_mode: "deterministic"
+industry: "ENE"
+base_type: "HydrogenComplianceWorkflowAgent"
+class: "src.graph.graph.HydrogenSupplyChainComplianceDocAgent"
+required_trust_level: "VERIFIED_EXTERNAL"
+requires:
+  secrets: []
+  extras: []
